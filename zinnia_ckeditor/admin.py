@@ -12,7 +12,8 @@ from zinnia.settings import ENTRY_BASE_MODEL
 if 'ckeditor_uploader' in settings.INSTALLED_APPS:
     from ckeditor_uploader.widgets import CKEditorUploadingWidget as CKEditor
 else:
-    from ckeditor.widgets import CKEditorWidget as CKEditor
+    # from ckeditor.widgets import CKEditorWidget as CKEditor
+    from django_ckeditor5.widgets import CKEditorWidget as CKEditor
 
 
 CONFIG_NAME = 'zinnia-content'
@@ -27,7 +28,8 @@ class EntryAdminCKEditorForm(EntryAdminForm):
     """
     content = forms.CharField(
         label=_('Content'), required=False,
-        widget=CKEditor(config_name=CONFIG_NAME))
+        widget=CKEditor(config_name=CONFIG_NAME)
+    )
 
 
 class EntryAdminCKEditorMixin(object):
